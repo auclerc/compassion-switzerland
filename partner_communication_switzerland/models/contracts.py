@@ -154,14 +154,18 @@ class RecurringContract(models.Model):
         for contract in self:
             if (
                     contract.child_id.project_id.suspension != "fund-suspended"
-                    and contract.type not in ["SC", "SWP"]
+                    and contract.type not in ["SC", "SWP", "G"]
             ):
                 invoice_lines = contract.invoice_line_ids.with_context(
                     lang="en_US"
                 ).filtered(
-                    lambda i: i.state == "open"
+                    lambda i, contract=contract: i.state == "open"
                     and i.due_date < this_month
-                    and i.invoice_id.invoice_category == "sponsorship"
+                    and (
+                        (contract.type == "S" and
+                         i.invoice_id.invoice_category == "sponsorship")
+                        or (i.invoice_id.invoice_category != "sponsorship")
+                    )
                 )
                 contract.due_invoice_ids = invoice_lines.mapped("invoice_id")
                 contract.amount_due = \
