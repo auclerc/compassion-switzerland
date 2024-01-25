@@ -51,6 +51,7 @@
     "demo": ["data/demo_journal.xml", "data/demo_account.xml"],
     "data": [
         "data/product.xml",
+        "data/pricelists.xml",
         "data/completion_rules.xml",
         "data/sequence.xml",
         "data/partner_category_data.xml",
