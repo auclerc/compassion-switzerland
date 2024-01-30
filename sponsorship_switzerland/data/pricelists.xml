@@ -18,7 +18,7 @@
         <record id="pricelist_item_csp" model="product.pricelist.item">
             <field name="pricelist_id" ref="product.list0"/>
             <field name="applied_on">1_product</field>
-            <field name="product_tmpl_id" search="[('name','=','Survival Sponsorship')]"/>
+            <field name="product_tmpl_id" search="[('name','=','Survival Sponsorships')]"/>
             <field name="compute_price">fixed</field>
             <field name="fixed_price">62.0</field>
         </record>
